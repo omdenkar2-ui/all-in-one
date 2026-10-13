@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Spec"
+  short_description: "Turn accepted backend behavior into versioned requirements, i..."
+  default_prompt: "Use $aio-spec for my backend task: turn accepted backend behavior into versioned requirements, interfaces and acceptance criteria."
+policy:
+  allow_implicit_invocation: true

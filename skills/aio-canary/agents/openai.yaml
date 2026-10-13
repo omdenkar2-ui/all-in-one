@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Canary"
+  short_description: "Observe bounded backend canary health and effects"
+  default_prompt: "Use $aio-canary to observe this backend deployment against its baseline and configured canary thresholds."
+policy:
+  allow_implicit_invocation: true

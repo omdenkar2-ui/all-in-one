@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Worktree"
+  short_description: "Set up isolated backend work ownership without discarding or..."
+  default_prompt: "Use $aio-worktree for my backend task: set up isolated backend work ownership without discarding or silently copying unrelated changes."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,17 @@
+{
+  "name": "all-in-one",
+  "owner": {
+    "name": "Om Denkar"
+  },
+  "metadata": {
+    "description": "All in One backend engineering and REA analysis plugin",
+    "version": "1.6.0"
+  },
+  "plugins": [
+    {
+      "name": "all-in-one",
+      "description": "42 AIO backend stages, Complete Destruction, optional mobile launch readiness and REA analysis",
+      "source": "./"
+    }
+  ]
+}

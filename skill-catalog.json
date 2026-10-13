@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "version": "1.6.0",
+  "scope": "backend",
+  "controllers": [
+    "all-in-one",
+    "complete-destruction"
+  ],
+  "specialists": [
+    {
+      "name": "aio-compound",
+      "phase": "continuity",
+      "purpose": "Capture a verified backend investigation as a searchable original lesson when its causal reasoning is absent from code, tests and existing docs; update stale lessons instead of creating duplicates. Use after non-obvious agent, pipeline, data or recovery work is solved."
+    },
+    {
+      "name": "aio-handoff",
+      "phase": "continuity",
+      "purpose": "Save a concise, source-anchored backend execution handoff that another session can safely resume."
+    },
+    {
+      "name": "aio-resume",
+      "phase": "continuity",
+      "purpose": "Resume the exact saved backend run after reconciling its ledger with current source and evidence."
+    },
+    {
+      "name": "aio-worktree",
+      "phase": "continuity",
+      "purpose": "Set up isolated backend work ownership without discarding or silently copying unrelated changes."
+    },
+    {
+      "name": "aio-ci",
+      "phase": "delivery",
+      "purpose": "Follow required backend PR or build checks to an observed terminal result without inventing CI success."
+    },
+    {
+      "name": "aio-commit",
+      "phase": "delivery",
+      "purpose": "Create a focused local commit after inspecting owned backend changes and validation evidence."
+    },
+    {
+      "name": "aio-feedback",
+      "phase": "delivery",
+      "purpose": "Resolve backend PR review feedback with evidence, scoped repairs and renewed checks."
+    },
+    {
+      "name": "aio-release",
+      "phase": "delivery",
+      "purpose": "Prepare and verify backend rollout, compatibility, canary signals and recovery before authorized deployment."
+    },
+    {
+      "name": "aio-ship",
+      "phase": "delivery",
+      "purpose": "Deliver a verified backend change locally, through a requested PR, or to an authorized deployment target. Use for shipping after implementation/review or refreshing a PR description; follows exact-head CI and reports pending or blocked states truthfully."
+    },
+    {
+      "name": "aio-brainstorm",
+      "phase": "discovery",
+      "purpose": "Explore ambiguous backend, API, agent or workflow ideas into a bounded requirements brief with alternatives and observable success. Use before architecture or planning when the outcome or scope is unsettled."
+    },
+    {
+      "name": "aio-ideate",
+      "phase": "discovery",
+      "purpose": "Generate and rank backend or agent-system approaches before committing to a design."
+    },
+    {
+      "name": "aio-prototype",
+      "phase": "discovery",
+      "purpose": "Run a bounded backend architecture spike to resolve a specific technical uncertainty."
+    },
+    {
+      "name": "aio-spec",
+      "phase": "discovery",
+      "purpose": "Turn accepted backend behavior into versioned requirements, interfaces and acceptance criteria."
+    },
+    {
+      "name": "aio-agents",
+      "phase": "implementation",
+      "purpose": "Engineer agent state, tool authority, model decisions, budgets and durable checkpoint recovery."
+    },
+    {
+      "name": "aio-algorithms",
+      "phase": "implementation",
+      "purpose": "Build and verify backend algorithms with independent oracles and explicit resource bounds."
+    },
+    {
+      "name": "aio-api",
+      "phase": "implementation",
+      "purpose": "Build or evolve backend API, webhook and event contracts with security and compatibility checks."
+    },
+    {
+      "name": "aio-data",
+      "phase": "implementation",
+      "purpose": "Plan and implement backend schemas, transactions, tenant access and compatible data migrations."
+    },
+    {
+      "name": "aio-debug",
+      "phase": "implementation",
+      "purpose": "Diagnose a backend bug, failed test, CI failure, agent/tool issue or pipeline incident by reproducing it, tracing boundaries and testing a causal hypothesis before a targeted fix. Use when behavior is unexplained or previous patches have not resolved it."
+    },
+    {
+      "name": "aio-pipelines",
+      "phase": "implementation",
+      "purpose": "Engineer queue jobs, durable workflows, DAGs and backfills with explicit recovery semantics."
+    },
+    {
+      "name": "aio-tdd",
+      "phase": "implementation",
+      "purpose": "Implement changed backend behavior through observed failing tests, minimal fixes and refactoring."
+    },
+    {
+      "name": "aio-work",
+      "phase": "implementation",
+      "purpose": "Implement an accepted backend plan or concrete build request through test-first units, ordered spec and risk reviews, and integrated verification. Use for backend execution or resuming an exact implementation run; use aio-debug for unexplained failures."
+    },
+    {
+      "name": "aio-explain",
+      "phase": "inspection",
+      "purpose": "Explain a backend or agent workflow from actual code, state, data and failure boundaries."
+    },
+    {
+      "name": "aio-canary",
+      "phase": "operations",
+      "purpose": "Observe a bounded backend canary or post-deploy window against identified baselines, configured thresholds and real functional effects. Use for baseline capture or deployment health checks; rollout and rollback require existing authorization."
+    },
+    {
+      "name": "aio-observe",
+      "phase": "operations",
+      "purpose": "Establish backend and agent telemetry, operational checks and actionable recovery signals."
+    },
+    {
+      "name": "aio-optimize",
+      "phase": "optimization",
+      "purpose": "Diagnose and improve backend performance using representative profiles and correctness checks."
+    },
+    {
+      "name": "aio-architecture",
+      "phase": "planning",
+      "purpose": "Design backend and AI agent execution architecture with typed state, authority boundaries, durable recovery, interfaces and resource budgets. Use for consequential architecture choices or workflow design before implementation."
+    },
+    {
+      "name": "aio-autoplan",
+      "phase": "planning",
+      "purpose": "Automatically refine and independently review an executable backend plan, with scope and developer-interface checks before engineering review. Use for autoplan or automatic backend planning; return to an authorized build controller without starting another pipeline."
+    },
+    {
+      "name": "aio-plan",
+      "phase": "planning",
+      "purpose": "Create an execution-ready backend implementation plan with stable requirements, owned units, exact interfaces, test-first verification and a dependency graph. Use for multi-step backend, agent, pipeline or algorithm work before changing production code."
+    },
+    {
+      "name": "aio-plan-review",
+      "phase": "planning",
+      "purpose": "Check a backend implementation plan for requirement coverage, feasibility and adversarial failures."
+    },
+    {
+      "name": "aio-devex-review",
+      "phase": "review",
+      "purpose": "Review the actual backend API, SDK or CLI developer journey, examples, errors and compatibility. Use to measure integration friction and diagnose developer-facing contract gaps; report-only unless fixes are authorized."
+    },
+    {
+      "name": "aio-doc-review",
+      "phase": "review",
+      "purpose": "Review backend plans, API contracts and runbooks for contradictions, gaps and stale operational claims."
+    },
+    {
+      "name": "aio-review",
+      "phase": "review",
+      "purpose": "Review a named backend diff or PR against its contract, then inspect correctness, security, test quality and failure recovery. Use for unit, fix-range or whole-change review with evidence-backed findings; report-only unless applying fixes is requested."
+    },
+    {
+      "name": "aio-security",
+      "phase": "review",
+      "purpose": "Audit backend trust boundaries, agent tools, tenant access and data exposure. Default to static inspection; use controlled reproduction and authorized hardening when requested."
+    },
+    {
+      "name": "aio-simplify",
+      "phase": "review",
+      "purpose": "Simplify backend changes without weakening contracts, failure behavior or test coverage."
+    },
+    {
+      "name": "aio-test-audit",
+      "phase": "review",
+      "purpose": "Audit the value of existing backend tests with a bounded shortlist, actual callers and regression evidence. Use for test-suite cleanup or confidence gaps; report-only unless test changes are authorized."
+    },
+    {
+      "name": "aio-benchmark",
+      "phase": "verification",
+      "purpose": "Run a fair, predeclared backend comparison of two or three workflows chosen from All in One, Compound Engineering and Superpowers using the same task, model settings and evaluator. Use when evidence is needed for a scoped quality or performance claim."
+    },
+    {
+      "name": "aio-checkpoint",
+      "phase": "verification",
+      "purpose": "Reconcile backend plan, units, review and verification evidence before advancing a pipeline stage."
+    },
+    {
+      "name": "aio-proof",
+      "phase": "verification",
+      "purpose": "Collect reproducible backend acceptance evidence bound to source and candidate artifacts."
+    },
+    {
+      "name": "aio-qa",
+      "phase": "verification",
+      "purpose": "Explore backend API, CLI, job, worker and webhook behavior, then repair authorized reproducible defects and verify durable outcomes. Use for backend QA, quick QA or replaying a prior regression report; use aio-qa-only for report-only inspection."
+    },
+    {
+      "name": "aio-qa-only",
+      "phase": "verification",
+      "purpose": "Report-only backend functional QA using Full, Quick or Regression exploration. Reproduce defects and retain evidence without repairing code, changing dependencies or shipping. Use for qa-only, an inspection-only QA report or verifying a previous failure report."
+    },
+    {
+      "name": "aio-test",
+      "phase": "verification",
+      "purpose": "Design and run backend boundary tests, fault injection and independent correctness oracles."
+    },
+    {
+      "name": "aio-verify",
+      "phase": "verification",
+      "purpose": "Verify backend acceptance and completion against fresh tests, source snapshots and delivery evidence. Use before closing or shipping backend work, checking completion claims, or reporting configured local health checks."
+    }
+  ],
+  "compatibility_aliases": {
+    "backend-plan": "aio-plan",
+    "agent-workflows": "aio-agents",
+    "backend-pipelines": "aio-pipelines",
+    "backend-algorithms": "aio-algorithms",
+    "backend-debug": "aio-debug",
+    "backend-review": "aio-review",
+    "backend-verify": "aio-verify"
+  },
+  "optional_launch": [
+    "launch-readiness",
+    "apple-appstore-reviewer",
+    "play-policy-insights"
+  ],
+  "optional_analysis": [
+    "reverse-engineer-anything"
+  ]
+}

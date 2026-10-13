@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Ship"
+  short_description: "Deliver verified backends and follow exact-head CI"
+  default_prompt: "Use $aio-ship to deliver this verified backend change to the requested destination."
+policy:
+  allow_implicit_invocation: true

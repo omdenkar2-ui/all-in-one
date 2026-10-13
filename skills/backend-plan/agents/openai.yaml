@@ -1,0 +1,6 @@
+interface:
+  display_name: "Backend Plan"
+  short_description: "Define a backend contract and implementation units before sub..."
+  default_prompt: "Use $backend-plan for my project."
+policy:
+  allow_implicit_invocation: true

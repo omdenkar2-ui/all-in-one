@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Autoplan"
+  short_description: "Automatically refine and review a backend plan"
+  default_prompt: "Use $aio-autoplan to produce a gated backend plan with scope, developer-interface and engineering checks under one shared budget."
+policy:
+  allow_implicit_invocation: true

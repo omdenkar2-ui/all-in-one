@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Agents"
+  short_description: "Engineer agent state, tool authority, model decisions, budget..."
+  default_prompt: "Use $aio-agents for my backend task: engineer agent state, tool authority, model decisions, budgets and durable checkpoint recovery."
+policy:
+  allow_implicit_invocation: true

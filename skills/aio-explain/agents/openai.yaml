@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Explain"
+  short_description: "Explain a backend or agent workflow from actual code, state,..."
+  default_prompt: "Use $aio-explain for my backend task: explain a backend or agent workflow from actual code, state, data and failure boundaries."
+policy:
+  allow_implicit_invocation: true

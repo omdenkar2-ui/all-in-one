@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "status": "blocked",
+  "source": {
+    "path": "contract.md",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "status": "planned",
+      "files": []
+    }
+  ],
+  "required_checks": ["unit", "failure"],
+  "checks": [],
+  "review": {
+    "status": "unavailable",
+    "findings": [],
+    "reason": "Implementation and independent review have not run."
+  },
+  "blockers": [
+    "Record the current contract path and its SHA256.",
+    "Implement the units and record their files.",
+    "Run the required checks, record evidence, and resolve blocking review findings."
+  ],
+  "delivery": {
+    "mode": "local",
+    "status": "pending",
+    "evidence": []
+  }
+}

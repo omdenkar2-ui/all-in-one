@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Doc Review"
+  short_description: "Review backend plans, API contracts and runbooks for contradi..."
+  default_prompt: "Use $aio-doc-review for my backend task: review backend plans, api contracts and runbooks for contradictions, gaps and stale operational claims."
+policy:
+  allow_implicit_invocation: true

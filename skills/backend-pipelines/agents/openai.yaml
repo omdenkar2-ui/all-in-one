@@ -1,0 +1,6 @@
+interface:
+  display_name: "Backend Pipelines"
+  short_description: "Build durable jobs, retries, partitions, DAGs and backfills w..."
+  default_prompt: "Use $backend-pipelines for my project."
+policy:
+  allow_implicit_invocation: true

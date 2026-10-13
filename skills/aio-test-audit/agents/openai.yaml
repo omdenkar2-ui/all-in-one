@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Test Audit"
+  short_description: "Audit backend test value with bounded evidence"
+  default_prompt: "Use $aio-test-audit to audit these backend tests for independent value and evidence-backed cleanup."
+policy:
+  allow_implicit_invocation: true

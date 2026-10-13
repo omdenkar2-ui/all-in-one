@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Compound"
+  short_description: "Keep verified backend lessons searchable and current"
+  default_prompt: "Use $aio-compound to capture any durable backend lesson from this verified investigation."
+policy:
+  allow_implicit_invocation: true

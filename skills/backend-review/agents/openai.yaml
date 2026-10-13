@@ -1,0 +1,6 @@
+interface:
+  display_name: "Backend Review"
+  short_description: "Independently review backend changes against requirements, co..."
+  default_prompt: "Use $backend-review for my project."
+policy:
+  allow_implicit_invocation: true

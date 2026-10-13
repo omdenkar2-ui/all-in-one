@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Plan"
+  short_description: "Plan owned backend units with testable contracts"
+  default_prompt: "Use $aio-plan to create an executable backend plan with exact interfaces, dependency units and verification evidence."
+policy:
+  allow_implicit_invocation: true

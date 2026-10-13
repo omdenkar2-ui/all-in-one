@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Handoff"
+  short_description: "Save a concise, source-anchored backend execution handoff tha..."
+  default_prompt: "Use $aio-handoff for my backend task: save a concise, source-anchored backend execution handoff that another session can safely resume."
+policy:
+  allow_implicit_invocation: true

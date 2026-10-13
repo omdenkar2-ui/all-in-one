@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Resume"
+  short_description: "Resume the exact saved backend run after reconciling its ledg..."
+  default_prompt: "Use $aio-resume for my backend task: resume the exact saved backend run after reconciling its ledger with current source and evidence."
+policy:
+  allow_implicit_invocation: true

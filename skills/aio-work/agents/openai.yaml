@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Work"
+  short_description: "Execute backend plans with tested, reviewed units"
+  default_prompt: "Use $aio-work to implement this backend plan and verify each accepted unit through delivery."
+policy:
+  allow_implicit_invocation: true

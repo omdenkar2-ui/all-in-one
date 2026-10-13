@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Data"
+  short_description: "Plan and implement backend schemas, transactions, tenant acce..."
+  default_prompt: "Use $aio-data for my backend task: plan and implement backend schemas, transactions, tenant access and compatible data migrations."
+policy:
+  allow_implicit_invocation: true

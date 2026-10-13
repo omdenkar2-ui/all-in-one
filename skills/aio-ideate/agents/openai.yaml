@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Ideate"
+  short_description: "Generate and rank backend or agent-system approaches before c..."
+  default_prompt: "Use $aio-ideate for my backend task: generate and rank backend or agent-system approaches before committing to a design."
+policy:
+  allow_implicit_invocation: true

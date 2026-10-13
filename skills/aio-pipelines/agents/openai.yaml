@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Pipelines"
+  short_description: "Engineer queue jobs, durable workflows, DAGs and backfills wi..."
+  default_prompt: "Use $aio-pipelines for my backend task: engineer queue jobs, durable workflows, dags and backfills with explicit recovery semantics."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Agent Workflows"
+  short_description: "Design and implement explicit agent state, tool contracts, ch..."
+  default_prompt: "Use $agent-workflows for my project."
+policy:
+  allow_implicit_invocation: true

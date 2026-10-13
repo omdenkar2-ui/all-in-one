@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Simplify"
+  short_description: "Simplify backend changes without weakening contracts, failure..."
+  default_prompt: "Use $aio-simplify for my backend task: simplify backend changes without weakening contracts, failure behavior or test coverage."
+policy:
+  allow_implicit_invocation: true

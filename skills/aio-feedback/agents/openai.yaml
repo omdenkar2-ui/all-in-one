@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Feedback"
+  short_description: "Resolve backend PR review feedback with evidence, scoped repa..."
+  default_prompt: "Use $aio-feedback for my backend task: resolve backend pr review feedback with evidence, scoped repairs and renewed checks."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO QA Only"
+  short_description: "Report backend QA findings without applying fixes"
+  default_prompt: "Use $aio-qa-only to run scoped backend functional QA and report reproducible findings without changing or shipping the implementation."
+policy:
+  allow_implicit_invocation: true

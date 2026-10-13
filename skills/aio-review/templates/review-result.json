@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "run_id": "",
+  "mode": "whole-change",
+  "reviewed_source": {"path": "", "sha256": "", "base": "", "head": "", "snapshot": ""},
+  "reviewer": {"identity": "", "kind": "independent-agent", "independent": false},
+  "spec_verdict": "unable-to-verify",
+  "risk_verdict": "unable-to-verify",
+  "requirements": [],
+  "findings": [],
+  "performed_checks": [],
+  "coverage": {"selected_lenses": [], "omitted": [], "limitations": ["Review has not run."]},
+  "next_action": "Bind the source and collect an actual review."
+}

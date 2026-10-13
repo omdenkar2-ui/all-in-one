@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Optimize"
+  short_description: "Diagnose and improve backend performance using representative..."
+  default_prompt: "Use $aio-optimize for my backend task: diagnose and improve backend performance using representative profiles and correctness checks."
+policy:
+  allow_implicit_invocation: true

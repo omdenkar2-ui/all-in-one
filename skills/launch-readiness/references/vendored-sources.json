@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-05",
+  "sources": [
+    {
+      "repository": "github/awesome-copilot",
+      "skill": "apple-appstore-reviewer",
+      "commit_sha": "143a3d976b3c1603cc8932984d5e1f28501cb5fc",
+      "license": "MIT",
+      "copied_without_modification": true,
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "d469ef904074f79b729479814835c62256cea68405aa30271bb52f779c183d30",
+          "url": "https://github.com/github/awesome-copilot/blob/143a3d976b3c1603cc8932984d5e1f28501cb5fc/skills/apple-appstore-reviewer/SKILL.md"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "e32449d23085399adc1222f7a17408b730550258e51627c153cb108ca9955823",
+          "url": "https://github.com/github/awesome-copilot/blob/143a3d976b3c1603cc8932984d5e1f28501cb5fc/LICENSE"
+        }
+      ]
+    },
+    {
+      "repository": "android/skills",
+      "skill": "play-policy-insights",
+      "commit_sha": "42dc2270e96032bd860bb94511e440aa00a43125",
+      "license": "Apache-2.0",
+      "copied_without_modification": true,
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "cc7b9074b746a07b14ba998d5620df0a57f7923545cb078fb47fd2e2c388d467",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/SKILL.md"
+        },
+        {
+          "path": "resources/common_mandates.md",
+          "sha256": "30623c7d55e54f2126fc0ed1b44356129af92121dce27f58f205e4079cd735f7",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/resources/common_mandates.md"
+        },
+        {
+          "path": "resources/compliance_report_template.md",
+          "sha256": "fedf8de0653f5887c2bfb0b6952c5fb8591b2fbfdae8a6c24c152707a79d3d2a",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/resources/compliance_report_template.md"
+        },
+        {
+          "path": "resources/critic.md",
+          "sha256": "1152e64b2e3ab93964ba7ec7e9f20b59ce953b8560fadfd6dab7c2ecc1e0fd01",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/resources/critic.md"
+        },
+        {
+          "path": "resources/goal_data_safety.md",
+          "sha256": "385e67139e20276b1ecb75bd7703f55068aec324f0371adcde5a7ef0eb530b27",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/resources/goal_data_safety.md"
+        },
+        {
+          "path": "resources/goal_permissions_and_apis.md",
+          "sha256": "74b52c77a6643cc9c755fbc1e36900d30a7a5457b46f27c78d38444cf6c57383",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/resources/goal_permissions_and_apis.md"
+        },
+        {
+          "path": "resources/goal_user_account.md",
+          "sha256": "2f2fea579e4311587fa90c85bd26662fc0a43ecc105e7487b507fd8928463dc1",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/resources/goal_user_account.md"
+        },
+        {
+          "path": "resources/policies.json",
+          "sha256": "acb66e054c7cad6f0c9b230573fe16a28dd8d168d0499a105fcaf3f80c95f5fa",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/resources/policies.json"
+        },
+        {
+          "path": "resources/scanner_config.json",
+          "sha256": "05ab96810e728f288b50c1ddb54a74200c62cc34e1136e6c8737de92833df1e6",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/resources/scanner_config.json"
+        },
+        {
+          "path": "scripts/generate_report.py",
+          "sha256": "66a3536cf206ab883307c9410ff2154798f1f207b366d6b3ea562b60223c33c7",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/scripts/generate_report.py"
+        },
+        {
+          "path": "scripts/orchestrator.py",
+          "sha256": "14b81cbc25e46eeb6dc0fe2afef9a0d414ba543dba8bfc299e33cf86072aff5a",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/scripts/orchestrator.py"
+        },
+        {
+          "path": "scripts/play_store_scraper.py",
+          "sha256": "1a7cfce2b04659ec5d003ccaebf2dc6b57b9280fadb287e31dc7cf50fbea92eb",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/scripts/play_store_scraper.py"
+        },
+        {
+          "path": "scripts/scanner.py",
+          "sha256": "9deb80401cad900a4efdcde7d63bc0f554e4bf283fb3c14b5ed618c4c3184c08",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/scripts/scanner.py"
+        },
+        {
+          "path": "scripts/template_engine.py",
+          "sha256": "766140144502ff1f3f84749df2fc93f634da0b9aa3160054eae8f5f922f5e467",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/play/play-policy-insights/scripts/template_engine.py"
+        },
+        {
+          "path": "LICENSE.txt",
+          "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+          "url": "https://github.com/android/skills/blob/42dc2270e96032bd860bb94511e440aa00a43125/LICENSE.txt"
+        }
+      ]
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "repository": "mjmirza/app-store-compliance",
+      "reason": "Custom revenue-based license; excluded rather than add its terms to this MIT/Apache package."
+    }
+  ]
+}

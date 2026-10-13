@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Observe"
+  short_description: "Establish backend and agent telemetry, operational checks and..."
+  default_prompt: "Use $aio-observe for my backend task: establish backend and agent telemetry, operational checks and actionable recovery signals."
+policy:
+  allow_implicit_invocation: true

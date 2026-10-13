@@ -1,0 +1,6 @@
+interface:
+  display_name: "All in One"
+  short_description: "Build reliable backends, agent workflows, and pipelines"
+  default_prompt: "Use $all-in-one to build and verify my backend workflow."
+policy:
+  allow_implicit_invocation: true

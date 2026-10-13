@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Brainstorm"
+  short_description: "Frame backend outcomes and compare viable approaches"
+  default_prompt: "Use $aio-brainstorm to turn this backend workflow idea into clear requirements and measurable acceptance."
+policy:
+  allow_implicit_invocation: true

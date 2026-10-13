@@ -1,0 +1,42 @@
+{
+  "name": "all-in-one",
+  "version": "1.6.0",
+  "homepage": "https://github.com/omdenkar2-ui/all-in-one",
+  "repository": "https://github.com/omdenkar2-ui/all-in-one",
+  "description": "Backend engineering with 42 AIO stages, autonomous execution, evidence gates and REA analysis.",
+  "author": {
+    "name": "Om Denkar"
+  },
+  "license": "MIT AND Apache-2.0",
+  "keywords": [
+    "backend",
+    "agents",
+    "workflows",
+    "pipelines",
+    "algorithms",
+    "complete-destruction",
+    "privacy",
+    "launch-readiness",
+    "reverse-engineering",
+    "rea",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "All in One",
+    "shortDescription": "Backend engineering and REA artifact analysis",
+    "longDescription": "Fifty-five skills include 42 AIO backend stages, Complete Destruction, optional mobile launch readiness and REA reverse engineering. A bundled MCP registration runs REA 6.4.0 for shipped binaries, packages, JavaScript, managed code and requested runtime evidence.",
+    "developerName": "Om Denkar",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use $all-in-one:complete-destruction to carry my backend task through implementation, tests, review, and verified delivery.",
+      "Use $all-in-one:reverse-engineer-anything to inspect my supplied app or binary and explain its behavior with evidence."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

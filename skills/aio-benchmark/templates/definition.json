@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "draft",
+  "title": "Fixed backend comparison",
+  "task": "task.md",
+  "evaluator": "evaluator.py",
+  "conditions": ["aio", "compound-engineering"],
+  "trials": [{"id": "trial-1", "seed": 1}],
+  "settings": {
+    "model": "Record the actual common model before freezing",
+    "reasoning": "Record the common reasoning setting",
+    "token_budget": 16000,
+    "tools": ["local file tools", "local test execution"],
+    "runtime": "Record the tested runtime and OS"
+  },
+  "gates": ["correctness", "security", "recovery"],
+  "metrics": [{"id": "latency_ms", "direction": "lower"}],
+  "assertions": ["Define concrete failure and recovery assertions before generation."]
+}

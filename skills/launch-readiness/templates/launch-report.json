@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "verdict": "blocked",
+  "source": {
+    "path": "contract.md",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "app": {
+    "name": "",
+    "developer_entity": "",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "markets": [],
+    "features": {
+      "backend": null,
+      "accounts": null,
+      "tracking": null,
+      "payments": null,
+      "ugc": null,
+      "children": null,
+      "regulated_data": null,
+      "ai_generated_content": null
+    }
+  },
+  "policy_review": {
+    "checked_on": "",
+    "sources": [],
+    "evidence": []
+  },
+  "builds": [],
+  "checks": [],
+  "blockers": [
+    "Establish app facts, current policies, candidate builds and actual evidence before claiming submission readiness."
+  ]
+}

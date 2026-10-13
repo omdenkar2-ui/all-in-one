@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Review"
+  short_description: "Review backend contracts, risks and recovery evidence"
+  default_prompt: "Use $aio-review to review this backend diff against its requirements and failure behavior."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Architecture"
+  short_description: "Design agent state, authority and durable recovery"
+  default_prompt: "Use $aio-architecture to design the backend boundaries, agent state and failure recovery for this workflow."
+policy:
+  allow_implicit_invocation: true

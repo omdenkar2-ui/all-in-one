@@ -1,0 +1,1000 @@
+{
+  "schema_version": 1,
+  "patterns": [
+    {
+      "id": "request-boundaries",
+      "domain": "architecture",
+      "title": "Map request and failure boundaries",
+      "problem": "Unclear service ownership hides failure behavior.",
+      "when_to_use": "Before adding a new backend path.",
+      "approach": "Trace authorization, validation, service, transaction/queue and result; assign data ownership and define each failure response.",
+      "failure_modes": [
+        "Ambiguous acknowledgement",
+        "Unowned data changes"
+      ],
+      "verification": [
+        "Trace a successful request and a timeout at each boundary."
+      ],
+      "source_ids": [
+        "compound-engineering",
+        "superpowers"
+      ],
+      "playbook": "references/architecture.md"
+    },
+    {
+      "id": "minimal-execution",
+      "domain": "architecture",
+      "title": "Select the simplest execution model",
+      "problem": "An orchestrator is added without a recovery requirement.",
+      "when_to_use": "Choosing synchronous, queued, agentic or durable execution.",
+      "approach": "Start with a bounded request or job; use a graph for branching state, a durable orchestrator for durable waits, and a DAG for partition dependencies.",
+      "failure_modes": [
+        "Operational complexity without benefit",
+        "Lost recovery state"
+      ],
+      "verification": [
+        "Explain which crash/wait requirement the selected mechanism satisfies."
+      ],
+      "source_ids": [
+        "temporal",
+        "langgraph",
+        "airflow"
+      ],
+      "playbook": "references/architecture.md"
+    },
+    {
+      "id": "outbox",
+      "domain": "architecture",
+      "title": "Commit state and publication with an outbox",
+      "problem": "A write succeeds but its required event is never published.",
+      "when_to_use": "A domain change and eventual publication must both persist.",
+      "approach": "Write domain state and an outbox entry in one transaction; publish with retries and deduplicate consumers using stable event IDs.",
+      "failure_modes": [
+        "Outbox backlog",
+        "Duplicate publication"
+      ],
+      "verification": [
+        "Crash between commit and publish; verify eventual event and one business effect."
+      ],
+      "source_ids": [
+        "postgres",
+        "temporal"
+      ],
+      "playbook": "references/architecture.md"
+    },
+    {
+      "id": "capacity-budget",
+      "domain": "architecture",
+      "title": "Bound concurrency and dependency capacity",
+      "problem": "Retrying workers consume shared pools and overload dependencies.",
+      "when_to_use": "Sizing API replicas, job workers and database pools.",
+      "approach": "Budget total connections and inflight work across replicas; enforce queue/concurrency limits, deadlines and an explicit overload response.",
+      "failure_modes": [
+        "Retry storm",
+        "Unbounded queue age"
+      ],
+      "verification": [
+        "Load with an unavailable dependency and inspect capacity, errors and queue age."
+      ],
+      "source_ids": [
+        "performance",
+        "postgres",
+        "temporal"
+      ],
+      "playbook": "references/architecture.md"
+    },
+    {
+      "id": "state-reducers",
+      "domain": "agents",
+      "title": "Define graph state and reducers",
+      "problem": "Parallel nodes overwrite or duplicate shared state.",
+      "when_to_use": "An agent graph has branches updating shared fields.",
+      "approach": "Use typed partial updates and explicit reducers; define append, replace and deduplication semantics with stable event identity.",
+      "failure_modes": [
+        "Lost branch updates",
+        "Duplicate events after replay"
+      ],
+      "verification": [
+        "Exercise concurrent branches and repeated updates with expected merged state."
+      ],
+      "source_ids": [
+        "langgraph"
+      ],
+      "playbook": "references/agent-workflows.md"
+    },
+    {
+      "id": "command-edges",
+      "domain": "agents",
+      "title": "Check Command routes and static edges",
+      "problem": "A node executes two successors unexpectedly.",
+      "when_to_use": "A LangGraph node returns Command goto while having static outgoing edges.",
+      "approach": "Inspect all outgoing routes; do not assume dynamic goto cancels static edges. Test each branch and termination against the installed version.",
+      "failure_modes": [
+        "Duplicate tool calls",
+        "Unexpected nonterminal branch"
+      ],
+      "verification": [
+        "Assert the exact executed node sequence for each transition."
+      ],
+      "source_ids": [
+        "langgraph"
+      ],
+      "playbook": "references/agent-workflows.md"
+    },
+    {
+      "id": "checkpoint-recovery",
+      "domain": "agents",
+      "title": "Checkpoint recovery uses stable identity",
+      "problem": "Agent progress is lost on restart or exposed by a run identifier.",
+      "when_to_use": "An agent must resume after process loss.",
+      "approach": "Persist checkpoints under stable run identity, authorize their access from tenant context, and keep cross-run memory separate with retention rules.",
+      "failure_modes": [
+        "Wrong checkpoint resumed",
+        "Cross-tenant history access"
+      ],
+      "verification": [
+        "Restart after a persisted transition and test another tenant accessing the run."
+      ],
+      "source_ids": [
+        "langgraph",
+        "postgres"
+      ],
+      "playbook": "references/agent-workflows.md"
+    },
+    {
+      "id": "effect-idempotency",
+      "domain": "agents",
+      "title": "Reconcile external effects before retry",
+      "problem": "An agent repeats a successful charge after losing its receipt.",
+      "when_to_use": "An external tool effect must survive duplicate delivery or crash recovery.",
+      "approach": "Persist a stable operation key; use provider idempotency or query/reconcile existing outcome before retry. Record its scope and retention.",
+      "failure_modes": [
+        "Duplicate charge",
+        "Key reused for a different operation"
+      ],
+      "verification": [
+        "Crash after effect before receipt; repeat delivery and confirm the business invariant."
+      ],
+      "source_ids": [
+        "temporal",
+        "langgraph"
+      ],
+      "playbook": "references/agent-workflows.md"
+    },
+    {
+      "id": "retry-owner",
+      "domain": "pipelines",
+      "title": "Assign one retry owner and deadline",
+      "problem": "Nested retries multiply attempts and delay failure.",
+      "when_to_use": "A task spans clients, activities and workers.",
+      "approach": "Classify errors and designate a single owner per logical boundary; account for all underlying retries within an overall attempt/time budget.",
+      "failure_modes": [
+        "Exponential attempt multiplication",
+        "Poisoned messages retried forever"
+      ],
+      "verification": [
+        "Inject rate limits and permanent invalid input; inspect attempts and terminal state."
+      ],
+      "source_ids": [
+        "temporal",
+        "airflow"
+      ],
+      "playbook": "references/pipelines.md"
+    },
+    {
+      "id": "deterministic-replay",
+      "domain": "pipelines",
+      "title": "Keep durable workflow replay deterministic",
+      "problem": "Old workflow histories diverge after a deployment.",
+      "when_to_use": "Temporal workflow code or dependencies change.",
+      "approach": "Keep effects/model calls in activities, use replay-safe primitives, and apply supported versioning/routing while old histories remain active.",
+      "failure_modes": [
+        "Nondeterministic replay",
+        "Old runs stuck after rollout"
+      ],
+      "verification": [
+        "Replay old histories and restart during an activity timeout."
+      ],
+      "source_ids": [
+        "temporal"
+      ],
+      "playbook": "references/pipelines.md"
+    },
+    {
+      "id": "partition-publication",
+      "domain": "pipelines",
+      "title": "Publish validated partition outputs atomically",
+      "problem": "Partial files or tables become visible as complete output.",
+      "when_to_use": "A batch task materializes a data partition.",
+      "approach": "Write to staging, validate checksum/schema/invariants, then publish atomically where supported; pass artifact references between tasks.",
+      "failure_modes": [
+        "Partial output consumed",
+        "Large artifacts overload orchestration state"
+      ],
+      "verification": [
+        "Terminate during write and verify consumers see only complete published output."
+      ],
+      "source_ids": [
+        "airflow",
+        "postgres"
+      ],
+      "playbook": "references/pipelines.md"
+    },
+    {
+      "id": "backfill-overlap",
+      "domain": "pipelines",
+      "title": "Define overlapping backfill semantics",
+      "problem": "A historical rerun conflicts with the scheduled run.",
+      "when_to_use": "Backfilling event-time partitions.",
+      "approach": "Define timezone, watermark, late-data handling, merge keys and publication ownership; bound concurrency and make overlap deterministic or excluded.",
+      "failure_modes": [
+        "Partition lost by overwrite",
+        "Duplicate late records"
+      ],
+      "verification": [
+        "Repeat and overlap the same partition and check row/artifact invariants."
+      ],
+      "source_ids": [
+        "airflow",
+        "postgres"
+      ],
+      "playbook": "references/pipelines.md"
+    },
+    {
+      "id": "oracle",
+      "domain": "algorithms",
+      "title": "Compare algorithms with a trusted small-input oracle",
+      "problem": "An optimized algorithm produces plausible but wrong answers.",
+      "when_to_use": "Implementing or replacing a nontrivial algorithm.",
+      "approach": "Write a straightforward oracle and compare generated/adversarial small cases; define ties, invalid inputs and numeric tolerances.",
+      "failure_modes": [
+        "Hidden edge-case error",
+        "Reference shares the same defect"
+      ],
+      "verification": [
+        "Cover empty, duplicate, extreme and skewed inputs with independent expected outcomes."
+      ],
+      "source_ids": [
+        "performance",
+        "superpowers"
+      ],
+      "playbook": "references/algorithms.md"
+    },
+    {
+      "id": "complexity",
+      "domain": "algorithms",
+      "title": "Account for remote calls in complexity",
+      "problem": "A nominally linear routine performs one database call per item.",
+      "when_to_use": "Analyzing backend algorithm cost.",
+      "approach": "Name input/workload dimensions and time/space cost; include remote round trips, critical path, allocation and batching opportunities.",
+      "failure_modes": [
+        "N-plus-one latency",
+        "Memory explosion at scale"
+      ],
+      "verification": [
+        "Count queries/calls and measure representative large inputs."
+      ],
+      "source_ids": [
+        "performance",
+        "postgres"
+      ],
+      "playbook": "references/algorithms.md"
+    },
+    {
+      "id": "profile-baseline",
+      "domain": "algorithms",
+      "title": "Profile before optimizing",
+      "problem": "A change improves a microbenchmark but hurts real workloads.",
+      "when_to_use": "Performance acceptance is unmet.",
+      "approach": "Capture representative baseline data and environment, profile the limiting mechanism, change one bottleneck and compare equal workloads.",
+      "failure_modes": [
+        "Misleading warm-cache result",
+        "Regression in memory or p95 latency"
+      ],
+      "verification": [
+        "Repeat measurements and report latency distribution, throughput, memory and error rate as relevant."
+      ],
+      "source_ids": [
+        "performance"
+      ],
+      "playbook": "references/algorithms.md"
+    },
+    {
+      "id": "bounded-concurrency",
+      "domain": "algorithms",
+      "title": "Bound asynchronous work and cancellation",
+      "problem": "Async work creates too many tasks or survives cancelled requests.",
+      "when_to_use": "Parallel I/O or CPU jobs are introduced.",
+      "approach": "Limit inflight work and queues, propagate deadlines/cancellation, and select CPU parallelism based on actual runtime/workload.",
+      "failure_modes": [
+        "Pool multiplication",
+        "Unbounded allocations"
+      ],
+      "verification": [
+        "Test cancellation and overload; confirm no orphan tasks and bounded resource use."
+      ],
+      "source_ids": [
+        "performance",
+        "temporal"
+      ],
+      "playbook": "references/algorithms.md"
+    },
+    {
+      "id": "race-constraints",
+      "domain": "data",
+      "title": "Enforce race-safe uniqueness in the database",
+      "problem": "Concurrent requests both pass read-before-write validation.",
+      "when_to_use": "Creating records or deduplicating operation keys.",
+      "approach": "Add the appropriate unique/check/foreign-key constraints and use atomic insert/upsert semantics; define conflict results.",
+      "failure_modes": [
+        "Duplicate logical records",
+        "Constraint error mapped incorrectly"
+      ],
+      "verification": [
+        "Issue simultaneous equivalent writes and assert the committed invariant."
+      ],
+      "source_ids": [
+        "postgres"
+      ],
+      "playbook": "references/data.md"
+    },
+    {
+      "id": "short-transactions",
+      "domain": "data",
+      "title": "Keep external work outside lock-holding transactions",
+      "problem": "A slow model or HTTP request blocks database writers.",
+      "when_to_use": "A transaction crosses an external dependency.",
+      "approach": "Persist a pending state or outbox, commit promptly, execute external work separately, and transition with race-safe validation.",
+      "failure_modes": [
+        "Long lock waits",
+        "Pool exhaustion"
+      ],
+      "verification": [
+        "Delay the dependency and verify other transactions and recovery remain viable."
+      ],
+      "source_ids": [
+        "postgres",
+        "temporal"
+      ],
+      "playbook": "references/data.md"
+    },
+    {
+      "id": "query-plans",
+      "domain": "data",
+      "title": "Use realistic query plans before adding indexes",
+      "problem": "Indexes are chosen from intuition or empty development tables.",
+      "when_to_use": "A database query degrades under representative load.",
+      "approach": "Inspect EXPLAIN and cardinality, match predicates/order/selectivity, and account for write/storage cost; ANALYZE executes the query including writes.",
+      "failure_modes": [
+        "Unnecessary index cost",
+        "Accidental mutation during analysis"
+      ],
+      "verification": [
+        "Compare realistic plans and runtime in a safe environment; allow justified sequential scans."
+      ],
+      "source_ids": [
+        "postgres"
+      ],
+      "playbook": "references/data.md"
+    },
+    {
+      "id": "expand-contract",
+      "domain": "data",
+      "title": "Migrate with compatible expand and contract stages",
+      "problem": "Old application workers break during a schema change.",
+      "when_to_use": "Deploying a compatibility-sensitive migration.",
+      "approach": "Expand schema, deploy compatible code, backfill in bounded restartable batches, verify invariants and retire old consumers before contraction.",
+      "failure_modes": [
+        "Long locks",
+        "Unrecoverable partial backfill"
+      ],
+      "verification": [
+        "Test old/new compatibility and restart a failed batch with restore/recovery instructions."
+      ],
+      "source_ids": [
+        "postgres",
+        "compound-engineering"
+      ],
+      "playbook": "references/data.md"
+    },
+    {
+      "id": "tenant-context",
+      "domain": "security",
+      "title": "Authorize resources from authenticated tenant context",
+      "problem": "A caller accesses another tenant by knowing its object ID.",
+      "when_to_use": "APIs, jobs, checkpoints or tools expose tenant data.",
+      "approach": "Derive identity from verified context and enforce resource/action authorization on every entry path; test actual application database roles.",
+      "failure_modes": [
+        "ID-based cross-tenant access",
+        "Service-role RLS bypass"
+      ],
+      "verification": [
+        "Attempt cross-tenant reads/writes and forged tenant inputs."
+      ],
+      "source_ids": [
+        "postgres",
+        "langgraph"
+      ],
+      "playbook": "references/security.md"
+    },
+    {
+      "id": "tool-authority",
+      "domain": "security",
+      "title": "Enforce tool authority outside model output",
+      "problem": "Retrieved text or model arguments expand a tool permission.",
+      "when_to_use": "Agents execute sensitive tools.",
+      "approach": "Use typed allowlisted actions, validation, scoped credentials and code-level authorization; untrusted content cannot grant permissions.",
+      "failure_modes": [
+        "Prompt/tool injection",
+        "Unauthorized side effect"
+      ],
+      "verification": [
+        "Feed adversarial retrieved instructions and forged tool arguments; confirm authority does not expand."
+      ],
+      "source_ids": [
+        "langgraph",
+        "temporal"
+      ],
+      "playbook": "references/security.md"
+    },
+    {
+      "id": "webhook-replay",
+      "domain": "security",
+      "title": "Validate signatures and duplicate callbacks",
+      "problem": "A replayed or forged callback repeats a business action.",
+      "when_to_use": "Receiving provider webhooks.",
+      "approach": "Use provider-documented signature and replay validation, validate state/schema, and deduplicate stable event IDs before effects.",
+      "failure_modes": [
+        "Forged callback",
+        "Valid duplicate charge"
+      ],
+      "verification": [
+        "Exercise invalid signatures, old callbacks, duplicates and out-of-order state transitions."
+      ],
+      "source_ids": [
+        "temporal",
+        "postgres"
+      ],
+      "playbook": "references/security.md"
+    },
+    {
+      "id": "secret-retention",
+      "domain": "security",
+      "title": "Protect secrets and persisted model data",
+      "problem": "Prompts, checkpoints or logs retain sensitive data unexpectedly.",
+      "when_to_use": "Persisting workflow/model state and operational diagnostics.",
+      "approach": "Keep credentials outside serialized state, redact logs, scope access, and define rotation, retention/deletion and abuse limits.",
+      "failure_modes": [
+        "Secret leaked in evidence",
+        "Unbounded retained personal data"
+      ],
+      "verification": [
+        "Inspect logs/checkpoints/evidence and test access, deletion and budget exhaustion."
+      ],
+      "source_ids": [
+        "langgraph",
+        "postgres"
+      ],
+      "playbook": "references/security.md"
+    },
+    {
+      "id": "boundary-matrix",
+      "domain": "verification",
+      "title": "Verify contract failure boundaries",
+      "problem": "Unit mocks pass while integration recovery fails.",
+      "when_to_use": "Selecting backend acceptance tests.",
+      "approach": "Map each invariant to unit/integration/recovery evidence; cover acknowledgement, retries, isolation, restart and resource bounds as relevant.",
+      "failure_modes": [
+        "Unexecuted test plan mistaken for result",
+        "Mock-only reliability claim"
+      ],
+      "verification": [
+        "Run checks and retain exact commands, outputs, exit codes and revision identity."
+      ],
+      "source_ids": [
+        "superpowers",
+        "compound-engineering"
+      ],
+      "playbook": "references/verification.md"
+    },
+    {
+      "id": "source-identity",
+      "domain": "verification",
+      "title": "Bind work evidence to the current source",
+      "problem": "A stale plan receipt causes repeated or wrong implementation.",
+      "when_to_use": "Resuming a multi-step backend task.",
+      "approach": "Record exact accepted source path/hash and unit coverage; compare receipt with current files before resuming or claiming completion.",
+      "failure_modes": [
+        "Wrong plan executed",
+        "Stale evidence accepted"
+      ],
+      "verification": [
+        "Rehash source and inspect owned artifacts, not worker assertions alone."
+      ],
+      "source_ids": [
+        "compound-engineering",
+        "superpowers"
+      ],
+      "playbook": "references/verification.md"
+    },
+    {
+      "id": "independent-review",
+      "domain": "verification",
+      "title": "Review requirements and implementation independently",
+      "problem": "An author misses a correctness or security assumption.",
+      "when_to_use": "Completing substantial backend changes.",
+      "approach": "Give a fresh reviewer exact requirements, changed scope and evidence; verify findings against code and fix acceptance blockers.",
+      "failure_modes": [
+        "Self-confirmation",
+        "Unresolved blocking findings hidden"
+      ],
+      "verification": [
+        "Record reviewer outcomes and confirm relevant tests after fixes."
+      ],
+      "source_ids": [
+        "superpowers",
+        "compound-engineering"
+      ],
+      "playbook": "references/verification.md"
+    },
+    {
+      "id": "receipt-limits",
+      "domain": "verification",
+      "title": "Treat receipt validation as a consistency check",
+      "problem": "A valid receipt is presented as proof of production correctness.",
+      "when_to_use": "Using the bundled completion checker.",
+      "approach": "Check source digest, artifact existence, required results and blockers; independently execute tests and inspect external targets because local evidence is caller-supplied.",
+      "failure_modes": [
+        "Fabricated evidence file",
+        "Unverified deployment claim"
+      ],
+      "verification": [
+        "Reject malformed/incomplete receipts and document what was actually observed."
+      ],
+      "source_ids": [
+        "compound-engineering",
+        "superpowers"
+      ],
+      "playbook": "references/verification.md"
+    },
+    {
+      "id": "owned-commits",
+      "domain": "delivery",
+      "title": "Keep canonical integration with one controller",
+      "problem": "Parallel workers overwrite or commit shared state.",
+      "when_to_use": "Delegating independent backend units.",
+      "approach": "Assign disjoint owned files/interfaces; root inspects reports and owns shared integration, final checks and canonical commits.",
+      "failure_modes": [
+        "Shared-file collision",
+        "Unrelated user changes staged"
+      ],
+      "verification": [
+        "Inspect final diff/status and stage only task-owned files."
+      ],
+      "source_ids": [
+        "compound-engineering",
+        "superpowers"
+      ],
+      "playbook": "references/delivery.md"
+    },
+    {
+      "id": "terminal-destination",
+      "domain": "delivery",
+      "title": "Verify the requested delivery destination",
+      "problem": "A local result is reported as a published PR or rollout.",
+      "when_to_use": "Finishing local, PR or deployment work.",
+      "approach": "Check actual destination state and relevant revision checks; no remote means honest local completion, not an invented push.",
+      "failure_modes": [
+        "Stale green CI",
+        "Watcher startup mistaken for completion"
+      ],
+      "verification": [
+        "Inspect created artifact or real PR/deployment and report unresolved limits."
+      ],
+      "source_ids": [
+        "compound-engineering"
+      ],
+      "playbook": "references/delivery.md"
+    },
+    {
+      "id": "rollout-recovery",
+      "domain": "delivery",
+      "title": "Plan mixed-version rollout and recovery",
+      "problem": "New code breaks active workflow histories or old schema consumers.",
+      "when_to_use": "Deploying workflow/schema changes.",
+      "approach": "Record revision, target, compatibility, health signals and rollback/forward recovery; rollout only within authorization.",
+      "failure_modes": [
+        "Old workflow cannot replay",
+        "Rollback incompatible with changed data"
+      ],
+      "verification": [
+        "Test history/schema compatibility and meaningful operations after rollout."
+      ],
+      "source_ids": [
+        "temporal",
+        "postgres"
+      ],
+      "playbook": "references/delivery.md"
+    },
+    {
+      "id": "durable-learning",
+      "domain": "delivery",
+      "title": "Capture only reusable reasoning",
+      "problem": "Documentation noise obscures operational lessons.",
+      "when_to_use": "A solved backend failure would recur without context.",
+      "approach": "Record symptom, boundary, root cause, correction, evidence and applicability when code/tests do not explain the reasoning; rebuild the knowledge index.",
+      "failure_modes": [
+        "Generic lessons without conditions",
+        "Stale index after editing JSON"
+      ],
+      "verification": [
+        "Check source-backed canonical records and SQLite consistency."
+      ],
+      "source_ids": [
+        "compound-engineering"
+      ],
+      "playbook": "references/delivery.md"
+    },
+    {
+      "id": "reproducer",
+      "domain": "debugging",
+      "title": "Reproduce before patching",
+      "problem": "Repeated speculative fixes never establish the failure.",
+      "when_to_use": "A backend defect or failing check is reported.",
+      "approach": "Capture expected invariant and actual request/job, minimize the reproducer, formulate a falsifiable hypothesis and verify failure before change.",
+      "failure_modes": [
+        "Weakened assertion",
+        "Transient symptom treated as cause"
+      ],
+      "verification": [
+        "Show failing reproducer then passing fixed behavior and relevant regressions."
+      ],
+      "source_ids": [
+        "superpowers"
+      ],
+      "playbook": "references/debugging.md"
+    },
+    {
+      "id": "attempt-history",
+      "domain": "debugging",
+      "title": "Trace the whole attempt history",
+      "problem": "Retries hide the initial fault and duplicate effects.",
+      "when_to_use": "Jobs or activities fail intermittently.",
+      "approach": "Correlate operation/job/workflow IDs across attempts and acknowledgement boundaries; inspect first failure and completed effects before retrying.",
+      "failure_modes": [
+        "Lost original exception",
+        "Duplicate side effect"
+      ],
+      "verification": [
+        "Inject failure between effect and acknowledgement and inspect recorded attempts."
+      ],
+      "source_ids": [
+        "temporal",
+        "compound-engineering"
+      ],
+      "playbook": "references/debugging.md"
+    },
+    {
+      "id": "hypothesis-reset",
+      "domain": "debugging",
+      "title": "Reset diagnosis after ineffective repairs",
+      "problem": "A retry cap silently waives acceptance.",
+      "when_to_use": "Three patches fail to improve the same symptom.",
+      "approach": "Preserve evidence, revisit competing hypotheses and ownership, and report a recoverable blocked state instead of labeling failure complete.",
+      "failure_modes": [
+        "Repeated wrong assumption",
+        "Hidden unresolved blocker"
+      ],
+      "verification": [
+        "Record exact blocker, tested hypotheses and next falsifying observation."
+      ],
+      "source_ids": [
+        "superpowers",
+        "compound-engineering"
+      ],
+      "playbook": "references/debugging.md"
+    },
+    {
+      "id": "data-repair",
+      "domain": "debugging",
+      "title": "Separate code fixes from existing data repair",
+      "problem": "Patched code leaves historical invalid records.",
+      "when_to_use": "A defect has already written corrupt state.",
+      "approach": "Identify the affected set, design repeatable bounded repair, retain recovery and verify counts/invariants independently of the code fix.",
+      "failure_modes": [
+        "Repair duplicates damage",
+        "Affected records missed"
+      ],
+      "verification": [
+        "Repeat repair safely and check repaired and remaining records."
+      ],
+      "source_ids": [
+        "postgres",
+        "superpowers"
+      ],
+      "playbook": "references/debugging.md"
+    },
+    {
+      "id": "plan-coverage-dag",
+      "domain": "architecture",
+      "title": "Bind requirements to executable owned units",
+      "problem": "A plan lists tasks but leaves requirements or interfaces without verification.",
+      "when_to_use": "Before substantial parallel or multi-unit backend execution.",
+      "approach": "Assign stable requirement, unit and verification IDs; map both directions, declare interfaces and owned files, reject cycles and conflicting ownership, then inspect feasibility independently.",
+      "failure_modes": [
+        "Uncovered requirement",
+        "Parallel edits to shared state",
+        "Schema pass mistaken for semantic readiness"
+      ],
+      "verification": [
+        "Remove a requirement link and require the structural gate to reject it.",
+        "Review actual test assertions and cross-unit interfaces."
+      ],
+      "source_ids": [
+        "compound-engineering",
+        "superpowers"
+      ],
+      "playbook": "references/architecture.md"
+    },
+    {
+      "id": "ordered-unit-review",
+      "domain": "verification",
+      "title": "Review unit spec before implementation risk",
+      "problem": "Correct-looking code omits accepted behavior or reviewers inspect an obsolete snapshot.",
+      "when_to_use": "Accepting delegated backend implementation units.",
+      "approach": "Bind each review to current owned changes; first inspect requirement coverage, then correctness, security, recovery and test quality; repair genuine blockers and re-review the affected range.",
+      "failure_modes": [
+        "Spec omissions survive style review",
+        "Self-review mislabeled independent",
+        "Findings apply to old files"
+      ],
+      "verification": [
+        "Inject an omitted requirement and require spec review to block.",
+        "Inspect fresh review coverage after a fix."
+      ],
+      "source_ids": [
+        "superpowers",
+        "compound-engineering"
+      ],
+      "playbook": "references/verification.md"
+    },
+    {
+      "id": "observed-red-green",
+      "domain": "verification",
+      "title": "Observe the failing behavior proof before repair",
+      "problem": "A new test passes unchanged code or fails for an unrelated setup problem.",
+      "when_to_use": "Changing backend behavior, defects or behavior-changing configuration.",
+      "approach": "Run the smallest meaningful invariant/boundary test, confirm its intended failure, implement the fix, observe green and refactor while retaining the oracle.",
+      "failure_modes": [
+        "False red from import failure",
+        "Implementation-mirroring assertions",
+        "Configuration behavior excluded from coverage"
+      ],
+      "verification": [
+        "Inspect the actual failure reason.",
+        "Show the old behavior fails the invariant and the repaired behavior passes."
+      ],
+      "source_ids": [
+        "superpowers"
+      ],
+      "playbook": "references/verification.md"
+    },
+    {
+      "id": "verification-delivery-scope",
+      "domain": "delivery",
+      "title": "Verify implementation before delivery and completion afterward",
+      "problem": "A pipeline requires publication evidence before it can prepare a deliverable.",
+      "when_to_use": "Nested workers returning to an autonomous backend controller.",
+      "approach": "Implementation verification checks local acceptance with destination pending; the controller delivers once, then completion verification checks the observed destination and final receipt. Reuse matching current-source evidence.",
+      "failure_modes": [
+        "Pre-shipping deadlock",
+        "Nested shipping controller",
+        "Unit green reported as deployment success"
+      ],
+      "verification": [
+        "Trace the return-to-caller path with delivery pending.",
+        "Require actual destination evidence only at completion."
+      ],
+      "source_ids": [
+        "compound-engineering",
+        "superpowers"
+      ],
+      "playbook": "references/delivery.md"
+    },
+    {
+      "id": "source-reconciled-resume",
+      "domain": "delivery",
+      "title": "Resume the exact run from observed state",
+      "problem": "Context loss restarts completed work or adopts a newer unrelated plan.",
+      "when_to_use": "Continuing long backend changes or recovering interrupted workers.",
+      "approach": "Reconcile accepted source digest, current files, owned commits, evidence and remote state with the ledger; preserve valid units, reopen affected checks and return the next checkpoint to the existing controller.",
+      "failure_modes": [
+        "Duplicate external effects",
+        "Lost user changes",
+        "Recursive controller restart"
+      ],
+      "verification": [
+        "Resume after a source change and reject stale evidence.",
+        "Resume a completed unit without dispatching it again."
+      ],
+      "source_ids": [
+        "compound-engineering",
+        "superpowers"
+      ],
+      "playbook": "references/delivery.md"
+    },
+    {
+      "id": "current-head-ci",
+      "domain": "delivery",
+      "title": "Observe required checks for the delivered current head",
+      "problem": "Old green CI or an empty checks response is treated as current delivery proof.",
+      "when_to_use": "Backend PR delivery and feedback repair.",
+      "approach": "Resolve current head and actual required check policy; wait for terminal conclusions, preserve actual skipped states and permitted reasons, and reopen checks after updates. Unknown, auth failure and empty responses are not green.",
+      "failure_modes": [
+        "Old-head success",
+        "Optional check mistaken for required",
+        "Policy skip reported as a test pass"
+      ],
+      "verification": [
+        "Advance the head after a green run and require fresh check evidence.",
+        "Observe pending and failed checks without completing delivery."
+      ],
+      "source_ids": [
+        "compound-engineering"
+      ],
+      "playbook": "references/delivery.md"
+    },
+    {
+      "id": "failure-mode-ledger",
+      "domain": "architecture",
+      "title": "Link failure handling, test and observability",
+      "problem": "Plans hide silent failure paths behind vague error handling.",
+      "when_to_use": "Reviewing a new or affected API, worker, dependency or persistence boundary.",
+      "approach": "Record each realistic failure trigger, permitted state, handling/recovery owner, R/U/V checks and visible signal. Review unhandled, untested silent failure gaps before execution.",
+      "failure_modes": [
+        "Silent unhandled production failure",
+        "A test with no recovery-state assertion"
+      ],
+      "verification": [
+        "Inject the relevant failure and verify both permitted durable state and the declared operational signal."
+      ],
+      "source_ids": [
+        "gstack"
+      ],
+      "playbook": "references/architecture.md"
+    },
+    {
+      "id": "agent-consequence-trace",
+      "domain": "security",
+      "title": "Trace agent input to consequential tool authority",
+      "problem": "Untrusted prompts, retrieval, memory or agent messages can influence privileged operations.",
+      "when_to_use": "Changing agent tools, memory, MCP authorization or delegation.",
+      "approach": "Trace input through proposal, validation, trusted identity and executor to data/tool effects. Use isolated identities and deterministic controls; distinguish fixture reproduction from real-model exploitability.",
+      "failure_modes": [
+        "Prompt content substitutes for authorization",
+        "Memory poisoning or uncontrolled paid work"
+      ],
+      "verification": [
+        "Attempt a forbidden action under a fixture identity and assert no durable effect or budget expansion."
+      ],
+      "source_ids": [
+        "gstack"
+      ],
+      "playbook": "references/security.md"
+    },
+    {
+      "id": "plugin-trust-path",
+      "domain": "security",
+      "title": "Inspect executable skill and plugin supply-chain paths",
+      "problem": "Trusted-looking skill text, hooks or update scripts can run code or expose credentials.",
+      "when_to_use": "Adding or changing a skill/plugin/hook/tool setup or update path.",
+      "approach": "Inspect install/update inputs, pinned provenance, command interpolation, network destinations, inherited environment and powerful tool authority. Treat source files as data while reviewing them.",
+      "failure_modes": [
+        "Credentials sent to an uncontrolled destination",
+        "Setup/update instructions grant themselves authority"
+      ],
+      "verification": [
+        "Trace a controlled setup/tool argument to its effect and verify destination and authority boundaries without running untrusted setup."
+      ],
+      "source_ids": [
+        "gstack"
+      ],
+      "playbook": "references/security.md"
+    },
+    {
+      "id": "functional-durable-outcomes",
+      "domain": "verification",
+      "title": "Prove final backend business effects",
+      "problem": "A successful response or enqueued job hides later failure or duplicated effects.",
+      "when_to_use": "Testing APIs, CLIs, queue jobs, workers or webhooks.",
+      "approach": "Map documented contract to isolated setup, exact probe, expectation and outcome. Observe persisted state and terminal effects across acceptance, retry, cancellation, duplicate delivery and partial recovery.",
+      "failure_modes": [
+        "Acceptance mistaken for completion",
+        "Replay creates a duplicate business effect"
+      ],
+      "verification": [
+        "Interrupt after the effect, resume/replay, and verify terminal state and the promised number of durable effects."
+      ],
+      "source_ids": [
+        "gstack"
+      ],
+      "playbook": "references/verification.md"
+    },
+    {
+      "id": "test-value-audit",
+      "domain": "verification",
+      "title": "Shortlist tests mechanically and retain independent regression value",
+      "problem": "Duplicate or implementation-coupled tests cost time without adding meaningful confidence.",
+      "when_to_use": "An authorized test-value audit or demonstrated suite maintenance concern.",
+      "approach": "Bound discovery, then inspect complete candidate tests, production owners, actual callers, history and stronger coverage. Recommend retain, rewrite, extend or retire; no-hit searches and green suites do not prove redundancy.",
+      "failure_modes": [
+        "Deleting a valid protocol or security guard",
+        "Calling a limited search exhaustive"
+      ],
+      "verification": [
+        "Demonstrate the same credible regression is detected by retained or replacement coverage; report unresolved candidates."
+      ],
+      "source_ids": [
+        "gstack"
+      ],
+      "playbook": "references/verification.md"
+    },
+    {
+      "id": "checker-exit-evidence",
+      "domain": "verification",
+      "title": "Preserve checker failure and incomplete coverage",
+      "problem": "Shell wrappers, log tails or missing tools can turn failed checks into apparent success.",
+      "when_to_use": "Executing configured local test/lint/type/build checks.",
+      "approach": "Launch explicit argv, capture actual child exit and separate stdout/stderr, bound time/output, and retain incomplete capture or prerequisites distinctly. A later log parser cannot override process failure.",
+      "failure_modes": [
+        "Nonzero checker exit masked by a successful tail",
+        "Timed-out or truncated evidence counted as acceptance"
+      ],
+      "verification": [
+        "Run controlled zero, nonzero, missing, timeout and large-output subprocesses; verify distinct truthful results and continued independent checks."
+      ],
+      "source_ids": [
+        "gstack"
+      ],
+      "playbook": "references/verification.md"
+    },
+    {
+      "id": "backend-canary-baseline",
+      "domain": "delivery",
+      "title": "Observe comparable backend release baselines",
+      "problem": "Deploy command success does not establish a healthy backend release.",
+      "when_to_use": "A requested bounded deployment observation with available signals.",
+      "approach": "Bind revision/cohort, configured thresholds, fresh windows and denominators; compare actual API/job effects and signals. Missing samples/signals remain inconclusive; use authorized recovery triggers and retain incidents.",
+      "failure_modes": [
+        "Post-deploy snapshot mislabeled pre-deploy baseline",
+        "Empty traffic or stale signals reported healthy"
+      ],
+      "verification": [
+        "Confirm deployed revision, minimum observation/sample conditions, functional effects and configured breach/recovery signals."
+      ],
+      "source_ids": [
+        "gstack"
+      ],
+      "playbook": "references/delivery.md"
+    },
+    {
+      "id": "developer-journey-proof",
+      "domain": "verification",
+      "title": "Exercise actual API SDK CLI integration journeys",
+      "problem": "Backend examples and error guidance promise an integration path that does not work.",
+      "when_to_use": "A changed public API/SDK/CLI setup, example, error or compatibility contract.",
+      "approach": "Pin one representative setup-to-success and recovery flow. Execute supported entrypoints in an authorized disposable environment, record starting conditions and distinguish measured, inferred and blocked claims.",
+      "failure_modes": [
+        "Warm environment reported as first-time onboarding",
+        "Source-only upgrade review claimed runtime compatible"
+      ],
+      "verification": [
+        "Execute the documented flow and a safe invalid-input/recovery case; verify effects, diagnostics and the relevant supported invocation."
+      ],
+      "source_ids": [
+        "gstack"
+      ],
+      "playbook": "references/verification.md"
+    }
+  ]
+}

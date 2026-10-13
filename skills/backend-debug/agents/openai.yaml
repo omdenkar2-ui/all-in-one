@@ -1,0 +1,6 @@
+interface:
+  display_name: "Backend Debug"
+  short_description: "Diagnose and fix backend failures from a reproducer and teste..."
+  default_prompt: "Use $backend-debug for my project."
+policy:
+  allow_implicit_invocation: true

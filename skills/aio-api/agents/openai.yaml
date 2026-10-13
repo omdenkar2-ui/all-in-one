@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Api"
+  short_description: "Build or evolve backend API, webhook and event contracts with..."
+  default_prompt: "Use $aio-api for my backend task: build or evolve backend api, webhook and event contracts with security and compatibility checks."
+policy:
+  allow_implicit_invocation: true

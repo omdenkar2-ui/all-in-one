@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-07",
+  "sources": [
+    {
+      "name": "airflow-dag-patterns",
+      "repository": "wshobson/agents",
+      "repository_url": "https://github.com/wshobson/agents",
+      "source_url": "https://github.com/wshobson/agents/blob/83e95a4893fab062a539c49fde5a4c2db26da577/plugins/data-engineering/skills/airflow-dag-patterns/SKILL.md",
+      "commit_sha": "83e95a4893fab062a539c49fde5a4c2db26da577",
+      "skill_path": "plugins/data-engineering/skills/airflow-dag-patterns/SKILL.md",
+      "skill_sha256": "99cf58e6d32b977e02a9c7ae2ed0ae4894e24ece95260134ac22925497c2a732",
+      "id": "airflow",
+      "url": "https://github.com/wshobson/agents/blob/83e95a4893fab062a539c49fde5a4c2db26da577/plugins/data-engineering/skills/airflow-dag-patterns/SKILL.md",
+      "license": "MIT",
+      "inspected_references": [
+        {
+          "path": "plugins/data-engineering/skills/airflow-dag-patterns/references/details.md",
+          "url": "https://raw.githubusercontent.com/wshobson/agents/83e95a4893fab062a539c49fde5a4c2db26da577/plugins/data-engineering/skills/airflow-dag-patterns/references/details.md",
+          "sha256": "7ee04b0d4ae58b49a1977d8b41fcb2173e026e20b97330ec963eebbd5c45bab2"
+        }
+      ]
+    },
+    {
+      "id": "compound-engineering",
+      "name": "Compound Engineering LFG",
+      "url": "https://github.com/EveryInc/compound-engineering-plugin",
+      "repository_url": "https://github.com/EveryInc/compound-engineering-plugin",
+      "installed_version": "3.27.0",
+      "license": "MIT",
+      "provenance": "Installed package snapshot; version and file digests recorded. No Git commit asserted.",
+      "inspected_files": [
+        {
+          "path": "skills/lfg/SKILL.md",
+          "sha256": "6b651a21ff267f9ea030b91d3507056cf74311b70bd3e58a79d8281e445c847d"
+        },
+        {
+          "path": "skills/ce-plan/SKILL.md",
+          "sha256": "477ee0dfbeb689ff80b01bbde0da54bf5b68bc276c53b36601413be9daf6f5bb"
+        },
+        {
+          "path": "skills/ce-work/SKILL.md",
+          "sha256": "346ae740a23d723573ff016df699b9150801ebcc4d385889b1fa53b63f879f81"
+        },
+        {
+          "path": "skills/ce-brainstorm/SKILL.md",
+          "sha256": "87a3439e7ed3e9228a50f9a9bd108173c17d0770a6eea292ebd090c0f9a694c4"
+        },
+        {
+          "path": "skills/ce-code-review/SKILL.md",
+          "sha256": "9e43f77ea5cb5e5b2933e63253fd2f4cdd789e85210e7e394684ad08a4579a0c"
+        },
+        {
+          "path": "skills/ce-debug/SKILL.md",
+          "sha256": "8e49005b1b02c03621c80650093b28371632edbede446e03cb9cd5980241e272"
+        },
+        {
+          "path": "skills/ce-compound/SKILL.md",
+          "sha256": "b9a7fda58992b725e9e71950541cf909b168a2b6c2b10b1e8b54e1afb39371e4"
+        },
+        {
+          "path": "skills/ce-handoff/SKILL.md",
+          "sha256": "597d52eef3a30339178fee892095e43a051da3f71d479aea0059aa605b26f311"
+        },
+        {
+          "path": "skills/ce-babysit-pr/SKILL.md",
+          "sha256": "c9e717d09c6a98791aac5a293658894b67d6584497541ae814f25deac021b38b"
+        },
+        {
+          "path": "skills/ce-resolve-pr-feedback/SKILL.md",
+          "sha256": "f1bb4f7ebedc7f60979208d5c465804a1fdce065f73e6c2e0fe0a1209cc8cca9"
+        },
+        {
+          "path": "skills/ce-simplify-code/SKILL.md",
+          "sha256": "b864de157a6a6719a3fed072cbca5268ced79e22000c4e904f4f3b71d664f8ab"
+        }
+      ]
+    },
+    {
+      "name": "langgraph-fundamentals",
+      "repository": "langchain-ai/langchain-skills",
+      "repository_url": "https://github.com/langchain-ai/langchain-skills",
+      "source_url": "https://github.com/langchain-ai/langchain-skills/blob/16a992f09ab3ccfb642dd4f08d350d833d1990bf/config/skills/langgraph-fundamentals/SKILL.md",
+      "commit_sha": "16a992f09ab3ccfb642dd4f08d350d833d1990bf",
+      "skill_path": "config/skills/langgraph-fundamentals/SKILL.md",
+      "skill_sha256": "193bea142c9df04abc44917fb96c0be53ec9b5c77f56670004d3c03c117fb990",
+      "id": "langgraph",
+      "url": "https://github.com/langchain-ai/langchain-skills/blob/16a992f09ab3ccfb642dd4f08d350d833d1990bf/config/skills/langgraph-fundamentals/SKILL.md",
+      "license": "MIT",
+      "inspected_references": [
+        {
+          "path": "config/skills/langgraph-fundamentals/references/python.md",
+          "url": "https://raw.githubusercontent.com/langchain-ai/langchain-skills/16a992f09ab3ccfb642dd4f08d350d833d1990bf/config/skills/langgraph-fundamentals/references/python.md",
+          "sha256": "3d30871a6463f955452fdebe607248c39b6806cf07c0fe655e3783b48acc6d91"
+        }
+      ],
+      "supplemental_skills": [
+        {
+          "name": "langgraph-persistence",
+          "source_url": "https://github.com/langchain-ai/langchain-skills/blob/16a992f09ab3ccfb642dd4f08d350d833d1990bf/config/skills/langgraph-persistence/SKILL.md",
+          "commit_sha": "16a992f09ab3ccfb642dd4f08d350d833d1990bf",
+          "skill_sha256": "0a9a4f36e6d7895a273ce0882655e57023d2d992d4fde8e033e2936ac1df789e"
+        }
+      ]
+    },
+    {
+      "name": "python-performance-optimization",
+      "repository": "wshobson/agents",
+      "repository_url": "https://github.com/wshobson/agents",
+      "source_url": "https://github.com/wshobson/agents/blob/83e95a4893fab062a539c49fde5a4c2db26da577/plugins/python-development/skills/python-performance-optimization/SKILL.md",
+      "commit_sha": "83e95a4893fab062a539c49fde5a4c2db26da577",
+      "skill_path": "plugins/python-development/skills/python-performance-optimization/SKILL.md",
+      "skill_sha256": "807aa725cc2b46b4d68a11a52e5b345be0449e80b7f4b60c32bfd2c35345afb5",
+      "id": "performance",
+      "url": "https://github.com/wshobson/agents/blob/83e95a4893fab062a539c49fde5a4c2db26da577/plugins/python-development/skills/python-performance-optimization/SKILL.md",
+      "license": "MIT",
+      "inspected_references": [
+        {
+          "path": "plugins/python-development/skills/python-performance-optimization/references/details.md",
+          "url": "https://raw.githubusercontent.com/wshobson/agents/83e95a4893fab062a539c49fde5a4c2db26da577/plugins/python-development/skills/python-performance-optimization/references/details.md",
+          "sha256": "8643031fabcbaf555ae1b4e702f1b5159689a31a4b286280d4df2822c9731281"
+        },
+        {
+          "path": "plugins/python-development/skills/python-performance-optimization/references/advanced-patterns.md",
+          "url": "https://raw.githubusercontent.com/wshobson/agents/83e95a4893fab062a539c49fde5a4c2db26da577/plugins/python-development/skills/python-performance-optimization/references/advanced-patterns.md",
+          "sha256": "dc1bca8a377572ba1583316b8288af0e5ca2d2be864dc33889b2d3b1ee5c2abf"
+        }
+      ]
+    },
+    {
+      "name": "supabase-postgres-best-practices",
+      "repository": "supabase/agent-skills",
+      "repository_url": "https://github.com/supabase/agent-skills",
+      "source_url": "https://github.com/supabase/agent-skills/blob/c9be0e931b7930f7d02126d04774d904c381e7d7/skills/supabase-postgres-best-practices/SKILL.md",
+      "commit_sha": "c9be0e931b7930f7d02126d04774d904c381e7d7",
+      "skill_path": "skills/supabase-postgres-best-practices/SKILL.md",
+      "skill_sha256": "ad65e776f45e761bafc609d3f506c77c1032225aa65e0c4c02f241b8071e5855",
+      "id": "postgres",
+      "url": "https://github.com/supabase/agent-skills/blob/c9be0e931b7930f7d02126d04774d904c381e7d7/skills/supabase-postgres-best-practices/SKILL.md",
+      "license": "MIT",
+      "inspected_references": [
+        {
+          "path": "skills/supabase-postgres-best-practices/references/schema-constraints.md",
+          "url": "https://raw.githubusercontent.com/supabase/agent-skills/c9be0e931b7930f7d02126d04774d904c381e7d7/skills/supabase-postgres-best-practices/references/schema-constraints.md",
+          "sha256": "90e8efda3e9e81095e642911ad4aae2809d160f29414338fa997253238f510f8"
+        },
+        {
+          "path": "skills/supabase-postgres-best-practices/references/monitor-explain-analyze.md",
+          "url": "https://raw.githubusercontent.com/supabase/agent-skills/c9be0e931b7930f7d02126d04774d904c381e7d7/skills/supabase-postgres-best-practices/references/monitor-explain-analyze.md",
+          "sha256": "4cb67ffbf8e57f2e5b380b0beb4242528b513723ce314a2c2ffcf083bd4203d7"
+        },
+        {
+          "path": "skills/supabase-postgres-best-practices/references/lock-short-transactions.md",
+          "url": "https://raw.githubusercontent.com/supabase/agent-skills/c9be0e931b7930f7d02126d04774d904c381e7d7/skills/supabase-postgres-best-practices/references/lock-short-transactions.md",
+          "sha256": "5aa7f61095916986d39644b446cdbcd2bacca7ef698a3bb50b3f82dd60207602"
+        },
+        {
+          "path": "skills/supabase-postgres-best-practices/references/query-composite-indexes.md",
+          "url": "https://raw.githubusercontent.com/supabase/agent-skills/c9be0e931b7930f7d02126d04774d904c381e7d7/skills/supabase-postgres-best-practices/references/query-composite-indexes.md",
+          "sha256": "73e42424e671f0266e74fdb220db3196790f69fb43e2b19c7b9483eb4971b554"
+        },
+        {
+          "path": "skills/supabase-postgres-best-practices/references/lock-skip-locked.md",
+          "url": "https://raw.githubusercontent.com/supabase/agent-skills/c9be0e931b7930f7d02126d04774d904c381e7d7/skills/supabase-postgres-best-practices/references/lock-skip-locked.md",
+          "sha256": "6c45077f430f29cd9cd8f448c94d578e827e7bd023fcdaf717a756acb116fa4b"
+        },
+        {
+          "path": "skills/supabase-postgres-best-practices/references/security-rls-basics.md",
+          "url": "https://raw.githubusercontent.com/supabase/agent-skills/c9be0e931b7930f7d02126d04774d904c381e7d7/skills/supabase-postgres-best-practices/references/security-rls-basics.md",
+          "sha256": "e04dd1a3a382aafdaaa73fe9f7976352acdde6e90c2a2470d281b94d4f44b096"
+        },
+        {
+          "path": "skills/supabase-postgres-best-practices/references/conn-pooling.md",
+          "url": "https://raw.githubusercontent.com/supabase/agent-skills/c9be0e931b7930f7d02126d04774d904c381e7d7/skills/supabase-postgres-best-practices/references/conn-pooling.md",
+          "sha256": "88cf086bf98ba865d2e9d0579974e1366b14157619d6a93e7da77be91084e4a5"
+        },
+        {
+          "path": "skills/supabase-postgres-best-practices/references/data-upsert.md",
+          "url": "https://raw.githubusercontent.com/supabase/agent-skills/c9be0e931b7930f7d02126d04774d904c381e7d7/skills/supabase-postgres-best-practices/references/data-upsert.md",
+          "sha256": "2612af83b20a2701dde30ef1f8d7efd26b7e9eef84717226b8f038a2d2150ff7"
+        }
+      ]
+    },
+    {
+      "id": "superpowers",
+      "name": "Superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "repository_url": "https://github.com/obra/superpowers",
+      "installed_version": "6.4.2",
+      "license": "MIT",
+      "provenance": "Installed package snapshot; version and file digests recorded. No Git commit asserted.",
+      "inspected_files": [
+        {
+          "path": "skills/brainstorming/SKILL.md",
+          "sha256": "a32d2255354775aa124855aa7100cf276bea096fff4ebb3a0edf57be216e6c72"
+        },
+        {
+          "path": "skills/writing-plans/SKILL.md",
+          "sha256": "a6c67c1900064347c2a329990dd3c555657c51c3ec53b259a08aa01a2c26139a"
+        },
+        {
+          "path": "skills/subagent-driven-development/SKILL.md",
+          "sha256": "8dde5589ee083fb4999106d116f01c8fdaf3116a8a9813fdedeb80329de49046"
+        },
+        {
+          "path": "skills/executing-plans/SKILL.md",
+          "sha256": "f38e8f2ddcf079f65493adc713c1fed78421dfaf5f4dbf6b3a6b2b1d95466e71"
+        },
+        {
+          "path": "skills/test-driven-development/SKILL.md",
+          "sha256": "64b03fce4aee5a97a93160cea8111f3ba13a17b7c001db4bd5836d67fd10705d"
+        },
+        {
+          "path": "skills/systematic-debugging/SKILL.md",
+          "sha256": "808fc5717aa88ad65efff312b11c186294d3e6ee301afb584e2f86599b137787"
+        },
+        {
+          "path": "skills/verification-before-completion/SKILL.md",
+          "sha256": "2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3"
+        },
+        {
+          "path": "skills/requesting-code-review/SKILL.md",
+          "sha256": "cfcee1b06774e7c0517f1e09be1a11f2d5680257072723e709ddbcf7e08b795a"
+        },
+        {
+          "path": "skills/receiving-code-review/SKILL.md",
+          "sha256": "091df1629510af1b92fc4abd6f96732ebedb4cb2c0f3457e8f2740b0504a2438"
+        },
+        {
+          "path": "skills/finishing-a-development-branch/SKILL.md",
+          "sha256": "8db5a922b242dd4e1bf824cb91c13b3e8d8e8a86d6ceaf7f0774eb9cce909d65"
+        },
+        {
+          "path": "skills/using-git-worktrees/SKILL.md",
+          "sha256": "8cfb86f121269e8f7f12361e6795c4f6738828340e28964c9229d365666c9edd"
+        },
+        {
+          "path": "skills/dispatching-parallel-agents/SKILL.md",
+          "sha256": "1968923066f3b707eb01d1992cdf4c42284c3855f70253b9cd5000ff45fca13c"
+        }
+      ]
+    },
+    {
+      "name": "temporal-developer",
+      "repository": "temporalio/skill-temporal-developer",
+      "repository_url": "https://github.com/temporalio/skill-temporal-developer",
+      "source_url": "https://github.com/temporalio/skill-temporal-developer/blob/133fa1df397c94c20d91a4e79029df2f894a7283/SKILL.md",
+      "commit_sha": "133fa1df397c94c20d91a4e79029df2f894a7283",
+      "skill_path": "SKILL.md",
+      "skill_sha256": "e27ec87b19585ef66e9de61c80f7f3ac18b56b0f8d34526d7da3c851eb5faac8",
+      "id": "temporal",
+      "url": "https://github.com/temporalio/skill-temporal-developer/blob/133fa1df397c94c20d91a4e79029df2f894a7283/SKILL.md",
+      "license": "MIT",
+      "inspected_references": [
+        {
+          "path": "references/core/determinism.md",
+          "url": "https://raw.githubusercontent.com/temporalio/skill-temporal-developer/133fa1df397c94c20d91a4e79029df2f894a7283/references/core/determinism.md",
+          "sha256": "058d0a829a76941b8f0f6e8d22b492d002e44ca7a6772088461c28a4444f556c"
+        },
+        {
+          "path": "references/core/patterns.md",
+          "url": "https://raw.githubusercontent.com/temporalio/skill-temporal-developer/133fa1df397c94c20d91a4e79029df2f894a7283/references/core/patterns.md",
+          "sha256": "2783294436acc85608d62267d82429798f0598bebe67ac0b72c7b3dc43365b94"
+        },
+        {
+          "path": "references/core/ai-patterns.md",
+          "url": "https://raw.githubusercontent.com/temporalio/skill-temporal-developer/133fa1df397c94c20d91a4e79029df2f894a7283/references/core/ai-patterns.md",
+          "sha256": "3fb30501fa98dc3296fe2f312061863fee216e53de37f51a8f5cfb86495e3163"
+        },
+        {
+          "path": "references/core/versioning.md",
+          "url": "https://raw.githubusercontent.com/temporalio/skill-temporal-developer/133fa1df397c94c20d91a4e79029df2f894a7283/references/core/versioning.md",
+          "sha256": "ef8c2c2a4798622d896181b64deed55fe601393fc65a2d964eca5af78faf2baa"
+        }
+      ]
+    },
+    {
+      "id": "gstack",
+      "name": "gstack installed backend workflow procedures",
+      "url": "https://github.com/garrytan/gstack",
+      "repository_url": "https://github.com/garrytan/gstack",
+      "license": "MIT",
+      "license_url": "https://github.com/garrytan/gstack/blob/main/LICENSE",
+      "installed_version": "unknown",
+      "snapshot_date": "2026-10-07",
+      "provenance": "Locally installed skill files inspected as research inputs. Digests identify this snapshot; no release version or upstream Git commit is asserted. Backend procedures are original adaptations, not bundled gstack runtime.",
+      "inspected_files": [
+        {
+          "path": "autoplan/SKILL.md",
+          "installed_relative_path": "gstack-autoplan/SKILL.md",
+          "sha256": "360bb4adf036e92ffebdaf60744f00393b19e322b8b12b0d062e8576764de23e"
+        },
+        {
+          "path": "canary/SKILL.md",
+          "installed_relative_path": "gstack-canary/SKILL.md",
+          "sha256": "87dd32954b3f264a63571a662e2c7f7f37bc4615de4c15698193567215feb45f"
+        },
+        {
+          "path": "careful/SKILL.md",
+          "installed_relative_path": "gstack-careful/SKILL.md",
+          "sha256": "d4e224f60e310744aac42924088dd46760592ec7ddea71b00812b8abf21fb3ac"
+        },
+        {
+          "path": "cso/SKILL.md",
+          "installed_relative_path": "gstack-cso/SKILL.md",
+          "sha256": "adda378eca5502f8cd726af7a8aa02f6f3bbc9aa1ab95849cbfeb4c383b6925e"
+        },
+        {
+          "path": "devex-review/SKILL.md",
+          "installed_relative_path": "gstack-devex-review/SKILL.md",
+          "sha256": "fbb0940f495a5537d9a9751a121694c75c832792ca37fe0b732821c0428a2aac"
+        },
+        {
+          "path": "freeze/SKILL.md",
+          "installed_relative_path": "gstack-freeze/SKILL.md",
+          "sha256": "78b0d2b1fcfd580d8085b567b65d2cfb6fb3d3ecca2138a9b27ea0c8c9143aa5"
+        },
+        {
+          "path": "guard/SKILL.md",
+          "installed_relative_path": "gstack-guard/SKILL.md",
+          "sha256": "21609ddd106ae91264052b7ff197c986faab06518c42f5d2ec91aeaccc0b0663"
+        },
+        {
+          "path": "health/SKILL.md",
+          "installed_relative_path": "gstack-health/SKILL.md",
+          "sha256": "3e3730acfb0d42f06e6000873445d10004bdd2b927c8f9cc13e3cdc17a8b9fb4"
+        },
+        {
+          "path": "plan-ceo-review/SKILL.md",
+          "installed_relative_path": "gstack-plan-ceo-review/SKILL.md",
+          "sha256": "e6ea5ded3dec6f998c548b3e757214eda0cbfdc51485be51d9a2b5816a1e939c"
+        },
+        {
+          "path": "plan-devex-review/SKILL.md",
+          "installed_relative_path": "gstack-plan-devex-review/SKILL.md",
+          "sha256": "254ad62c340ecee9eeb500d5c581dbcaa1822f9d9d33957577c533a2476f619f"
+        },
+        {
+          "path": "plan-eng-review/SKILL.md",
+          "installed_relative_path": "gstack-plan-eng-review/SKILL.md",
+          "sha256": "17611ac9d20eafea116cd997460813b077991dcb943b6e628c3e8816d5108db9"
+        },
+        {
+          "path": "qa-only/SKILL.md",
+          "installed_relative_path": "gstack-qa-only/SKILL.md",
+          "sha256": "1b3026fcd551fc939eaf41fad809ad70f76c92a886a5c3923a0bd4924d81b238"
+        },
+        {
+          "path": "qa/SKILL.md",
+          "installed_relative_path": "gstack-qa/SKILL.md",
+          "sha256": "cfa25089e70159240c14376b5fe76671603a60e15cafc6c813d7b97dc0f7a8a2"
+        },
+        {
+          "path": "qa/sections/system-functional.md",
+          "installed_relative_path": "gstack-qa/sections/system-functional.md",
+          "sha256": "54ef6bc998b11d0f0a98719cbb5cd1bc26736d811fc879dbf1e27be43ac19e22"
+        },
+        {
+          "path": "test-audit/SKILL.md",
+          "installed_relative_path": "gstack-test-audit/SKILL.md",
+          "sha256": "aa34846caab53e9f09b871aee466ce87416e85e8d347160ee87cc0f8bc4a10ec"
+        },
+        {
+          "path": "SKILL.md",
+          "installed_relative_path": "gstack/SKILL.md",
+          "sha256": "ea0b03057fb02e52395a623d043a8e7584cf17c6405a2408a83d7565e1276a58"
+        }
+      ]
+    }
+  ]
+}

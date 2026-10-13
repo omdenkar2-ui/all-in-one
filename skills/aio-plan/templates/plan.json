@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "status": "blocked",
+  "source": {
+    "path": "contract.md",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "requirements": [],
+  "units": [],
+  "verification": [],
+  "binding_decisions": [],
+  "blockers": [
+    "This starter has no inspected source, requirements, owned units, verification contract or completed plan review. Populate it from the actual accepted work before claiming readiness."
+  ]
+}

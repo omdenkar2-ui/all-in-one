@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Release"
+  short_description: "Prepare and verify backend rollout, compatibility, canary sig..."
+  default_prompt: "Use $aio-release for my backend task: prepare and verify backend rollout, compatibility, canary signals and recovery before authorized deployment."
+policy:
+  allow_implicit_invocation: true

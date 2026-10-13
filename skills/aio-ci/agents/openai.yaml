@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Ci"
+  short_description: "Follow required backend PR or build checks to an observed ter..."
+  default_prompt: "Use $aio-ci for my backend task: follow required backend pr or build checks to an observed terminal result without inventing ci success."
+policy:
+  allow_implicit_invocation: true

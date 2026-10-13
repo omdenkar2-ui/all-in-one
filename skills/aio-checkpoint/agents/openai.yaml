@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Checkpoint"
+  short_description: "Reconcile backend plan, units, review and verification eviden..."
+  default_prompt: "Use $aio-checkpoint for my backend task: reconcile backend plan, units, review and verification evidence before advancing a pipeline stage."
+policy:
+  allow_implicit_invocation: true

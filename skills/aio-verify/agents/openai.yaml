@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Verify"
+  short_description: "Check backend acceptance using fresh execution evidence"
+  default_prompt: "Use $aio-verify to establish whether this backend change meets its accepted requirements."
+policy:
+  allow_implicit_invocation: true

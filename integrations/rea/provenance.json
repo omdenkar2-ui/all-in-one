@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "REA",
+  "repository": "https://github.com/morluto/rea",
+  "package": "rea-agents",
+  "version": "6.4.0",
+  "license": "MIT",
+  "npm_integrity": "sha512-Vj1zWfSlna5bphGoaoI/TcVBuYvze9u+OyPC3Shz8YkBqaCTqB4COnnRoX7XDwMpwI24ZlFEel2yEj0k8LTWEQ==",
+  "skill_path": "skills/reverse-engineer-anything",
+  "copied_without_modification": true,
+  "files": [
+    {
+      "path": "SKILL.md",
+      "sha256": "46b495fe6459c283c1432294ebe67799a54391cd2ded197ee7df3f8ac0a8ac8f"
+    },
+    {
+      "path": "references/android-applications.md",
+      "sha256": "412d9cb462d85b07f6fdbc2453dd741ca3da2c0dbba627867d5624df94afa74c"
+    },
+    {
+      "path": "references/connection-and-recovery.md",
+      "sha256": "668e421e2a27b63058f42ebd36bec04db73404c136e5f47611119ab9d4b4f607"
+    },
+    {
+      "path": "references/evidence-workflows.md",
+      "sha256": "dd23217d55342bbe3e98a2bf47a7f208b35a4b41c98645ac160a4d0aac5316f9"
+    },
+    {
+      "path": "references/javascript-applications.md",
+      "sha256": "04cc298e2485d1db7925b8789097fc5fdd042e937ed11980d3eabc29cb176e59"
+    },
+    {
+      "path": "references/native-and-artifacts.md",
+      "sha256": "1947af57448ba7be6a0736ffbe976c7ecdab4105f315ecc06c830727cc5205fe"
+    },
+    {
+      "path": "references/runtime-observation.md",
+      "sha256": "b3eea94dd7d0c6474634de22ac3ccae317f42ba1ba2389d93535ee8dae7d94e1"
+    }
+  ],
+  "added_files": [
+    "LICENSE",
+    "agents/openai.yaml"
+  ],
+  "license_sha256": "798f9e4d18e49b30bf2f12696c8ced73dc4e1413da375a333d01281543a1ea8b"
+}

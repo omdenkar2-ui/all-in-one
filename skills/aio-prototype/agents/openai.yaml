@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Prototype"
+  short_description: "Run a bounded backend architecture spike to resolve a specifi..."
+  default_prompt: "Use $aio-prototype for my backend task: run a bounded backend architecture spike to resolve a specific technical uncertainty."
+policy:
+  allow_implicit_invocation: true

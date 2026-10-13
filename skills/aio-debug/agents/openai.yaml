@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Debug"
+  short_description: "Diagnose backend failures with causal experiments"
+  default_prompt: "Use $aio-debug to reproduce this backend failure, identify its cause, and verify the fix."
+policy:
+  allow_implicit_invocation: true

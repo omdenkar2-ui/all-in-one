@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO QA"
+  short_description: "Exercise and repair selected backend contracts"
+  default_prompt: "Use $aio-qa to exercise my backend contracts, reproduce authorized defects and verify their fixes under the shared run budget."
+policy:
+  allow_implicit_invocation: true

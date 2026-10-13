@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Tdd"
+  short_description: "Implement changed backend behavior through observed failing t..."
+  default_prompt: "Use $aio-tdd for my backend task: implement changed backend behavior through observed failing tests, minimal fixes and refactoring."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Plan Review"
+  short_description: "Check a backend implementation plan for requirement coverage,..."
+  default_prompt: "Use $aio-plan-review for my backend task: check a backend implementation plan for requirement coverage, feasibility and adversarial failures."
+policy:
+  allow_implicit_invocation: true

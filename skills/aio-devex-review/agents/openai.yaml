@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Developer Experience Review"
+  short_description: "Measure backend API, SDK and CLI developer flows"
+  default_prompt: "Use $aio-devex-review to exercise this backend developer journey and report measured friction and contract gaps."
+policy:
+  allow_implicit_invocation: true

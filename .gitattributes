@@ -1,0 +1,2 @@
+# Preserve exact bytes of vendored files and their provenance hashes on all hosts.
+* -text

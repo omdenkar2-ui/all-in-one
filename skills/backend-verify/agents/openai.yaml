@@ -1,0 +1,6 @@
+interface:
+  display_name: "Backend Verify"
+  short_description: "Run backend acceptance, integration, recovery and resource ch..."
+  default_prompt: "Use $backend-verify for my project."
+policy:
+  allow_implicit_invocation: true

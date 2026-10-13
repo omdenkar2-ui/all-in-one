@@ -1,0 +1,6 @@
+interface:
+  display_name: "Backend Algorithms"
+  short_description: "Implement and optimize backend algorithms with correctness or..."
+  default_prompt: "Use $backend-algorithms for my project."
+policy:
+  allow_implicit_invocation: true

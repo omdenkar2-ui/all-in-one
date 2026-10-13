@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Proof"
+  short_description: "Collect reproducible backend acceptance evidence bound to sou..."
+  default_prompt: "Use $aio-proof for my backend task: collect reproducible backend acceptance evidence bound to source and candidate artifacts."
+policy:
+  allow_implicit_invocation: true

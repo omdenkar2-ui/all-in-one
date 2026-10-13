@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Commit"
+  short_description: "Create a focused local commit after inspecting owned backend..."
+  default_prompt: "Use $aio-commit for my backend task: create a focused local commit after inspecting owned backend changes and validation evidence."
+policy:
+  allow_implicit_invocation: true

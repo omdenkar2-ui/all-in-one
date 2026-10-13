@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Algorithms"
+  short_description: "Build and verify backend algorithms with independent oracles..."
+  default_prompt: "Use $aio-algorithms for my backend task: build and verify backend algorithms with independent oracles and explicit resource bounds."
+policy:
+  allow_implicit_invocation: true

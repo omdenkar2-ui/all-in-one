@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Security"
+  short_description: "Audit backend trust boundaries with scoped security evidence"
+  default_prompt: "Use $aio-security to statically audit this backend's trust boundaries, agent tools, tenant access and data exposure, and report supported findings."
+policy:
+  allow_implicit_invocation: true

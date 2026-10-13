@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Benchmark"
+  short_description: "Compare backend workflows with fixed evidence"
+  default_prompt: "Use $aio-benchmark to compare All in One and Compound Engineering on one fixed backend task, adding Superpowers only if requested."
+policy:
+  allow_implicit_invocation: true

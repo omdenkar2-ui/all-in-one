@@ -1,0 +1,6 @@
+interface:
+  display_name: "AIO Test"
+  short_description: "Design and run backend boundary tests, fault injection and in..."
+  default_prompt: "Use $aio-test for my backend task: design and run backend boundary tests, fault injection and independent correctness oracles."
+policy:
+  allow_implicit_invocation: true
