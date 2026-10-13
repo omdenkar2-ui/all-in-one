@@ -1,5 +1,7 @@
 # All in One
 
+[![skills.sh](https://skills.sh/b/omdenkar2-ui/all-in-one)](https://skills.sh/omdenkar2-ui/all-in-one)
+
 **Take a backend idea from requirements to tested delivery with one Codex plugin.**
 
 Built by Om Denkar. Open source, with 55 skills for backend engineering, AI agents, durable jobs, data pipelines, review and release. Start with one task; use the focused stages when you need more control.
@@ -41,6 +43,30 @@ marketplace, then install all-in-one@all-in-one.
 ```
 
 Native installation includes the supporting files, knowledge library and REA tool registration. To install a downloaded or cloned copy, open its repository folder and use `codex plugin marketplace add .` followed by the same plugin install command.
+
+## skills.sh installation
+
+Install the complete skill collection into your current project with the [skills CLI](https://skills.sh/docs):
+
+```sh
+npx skills add omdenkar2-ui/all-in-one --skill '*' --agent codex
+```
+
+Install all skills together so their cross-skill references remain available. To browse the collection without installing:
+
+```sh
+npx skills add omdenkar2-ui/all-in-one --list
+```
+
+Start a fresh Codex chat in that project and ask:
+
+```text
+Use $complete-destruction to implement and verify my backend task.
+```
+
+This route installs the skill files and their supporting resources. It does not register the REA MCP server or install the repository-level tools. Use the native Codex plugin installation above for the complete integration. Choose one installation method per workspace to avoid duplicate skill entries.
+
+The [skills.sh collection](https://skills.sh/omdenkar2-ui/all-in-one) is discovered through installations made with the skills CLI; indexing is managed by skills.sh.
 
 ## How it works
 
